@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konsultasi Akademik ULM</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+    
+<body>
+<div class="top-navbar"></div>
+<div class="main-header">
+    <div class="header-brand">
+        <img src="logo_ulm.jpg" alt="Logo ULM" class="header-logo">
+        <div class="header-text">
+            <h1 class="header-title">KONSULTASI</h1>
+            <p class="header-subtitle">AKADEMIK DAN SKRIPSI</p>
+            <p class="header-univ">UNIVERSITAS LAMBUNG MANGKURAT</p>
+        </div>
+    </div>
+</div>
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-md-11">
+                <div class="card card-custom">
+                    
+                    
+                    <div id="tahapLogin">
+                        <div class="text-center mb-4">
+                            <h4 class="fw-bold" style="color: var(--ulm-orange);">
+                                <i class="fas fa-sign-in-alt me-2"></i>Akses Layanan
+                            </h4>
+                            <p class="text-muted">Silakan masukkan identitas mahasiswa Anda.</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="inputNama" placeholder="Contoh: Nadya Nadhir Soraya" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold">NIM</label>
+                                <input type="number" class="form-control" id="inputNim" placeholder="Masukkan NIM (Min. 13 Digit)" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Semester Saat Ini <span class="text-danger">*</span></label>
+                            <select class="form-select" id="inputSemester" required>
+                                <option value="" selected disabled>-- Pilih Semester --</option>
+                                <option value="1">Semester 1</option>
+                                <option value="2">Semester 2</option>
+                                <option value="3">Semester 3</option>
+                                <option value="4">Semester 4</option>
+                                <option value="5">Semester 5</option>
+                                <option value="6">Semester 6</option>
+                                <option value="7">Semester 7</option>
+                                <option value="8">Semester 8</option>
+                                <option value="9">Semester 9</option>
+                                <option value="10">Semester 10</option>
+                                <option value="11">Semester 11</option>
+                                <option value="12">Semester 12</option>
+                                <option value="13">Semester 13</option>
+                                <option value="14">Semester 14</option>
+                            </select>
+                        </div>
+                        <div class="d-grid">
+                            <button type="button" class="btn btn-custom" id="btnMasuk">
+                                Masuk <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                 
+                    <div id="tahapDasbor">
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4 border-bottom pb-3">
+                            <div>
+                                <h5 class="fw-bold mb-2" style="color: var(--ulm-orange);">Halo, <span id="displayNama"></span></h5>
+                                <div class="d-flex flex-wrap gap-2 mt-2">
+                                    <span class="badge bg-secondary px-2 py-1"><i class="fas fa-id-card me-1"></i>NIM: <span id="displayNim"></span></span>
+                                    <span class="badge px-2 py-1" style="background-color: var(--ulm-green);"><i class="fas fa-layer-group me-1"></i>Semester: <span id="displaySemester"></span></span>
+                                    <span class="badge bg-info text-dark px-2 py-1"><i class="fas fa-calendar-alt me-1"></i><span id="displayTahunAkademik"></span></span>
+                                </div>
+                            </div>
+                            
+                           
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-light border" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 8px 12px;">
+                                    <i class="fas fa-bars fa-lg text-secondary"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                                    <li>
+                                        <a class="dropdown-item py-2" href="#" data-bs-toggle="modal" data-bs-target="#modalInfo">
+                                            <i class="fas fa-info-circle me-2 text-primary"></i> Tentang Kami
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item py-2 text-danger fw-bold" href="#" id="btnKeluar">
+                                            <i class="fas fa-sign-out-alt me-2"></i> Keluar Website
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div id="layarMenu">
+                            <h6 class="fw-bold mb-3 text-center text-muted">Pilih layanan yang Anda perlukan:</h6>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-4">
+                                    <div class="menu-card shadow-sm" data-topik="akademik" data-judul="Konsultasi Akademik & Kartu Rencana Studi (KRS)">
+                                        <i class="fas fa-user-graduate"></i>
+                                        <h6 class="fw-bold mb-1">Akademik & KRS</h6>
+                                        <small>Dosen Pembimbing Akademik</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="menu-card shadow-sm" data-topik="nilai" data-judul="Konsultasi Nilai & Kartu Hasil Studi (KHS)">
+                                        <i class="fas fa-file-signature"></i>
+                                        <h6 class="fw-bold mb-1">Nilai & KHS</h6>
+                                        <small>Dosen Mata Kuliah</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="menu-card shadow-sm locked" data-topik="skripsi" data-judul="Bimbingan Skripsi & Tugas Akhir (TA)" id="menuSkripsi">
+                                        <i class="fas fa-lock" id="iconSkripsi"></i>
+                                        <h6 class="fw-bold mb-1">Skripsi & TA</h6>
+                                        <small id="teksSkripsi">Terkunci (Min. Smt 6)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div id="layarForm">
+                            <button type="button" class="btn btn-outline-secondary btn-sm mb-4 fw-bold" id="btnKembali">
+                                <i class="fas fa-arrow-left me-2"></i> Kembali ke Pilihan Layanan
+                            </button>
+                            
+                            <h5 class="fw-bold mb-2" style="color: var(--ulm-orange);" id="judulFormLayanan">Formulir Layanan</h5>
+                            <p class="text-muted mb-4 pb-3 border-bottom" id="deskripsiLayanan" style="font-size: 0.95rem; line-height: 1.5;"></p>
+
+                            <form id="formDetail">
+                                <input type="hidden" id="topikTerpilihValue"> 
+                                <input type="hidden" id="selectedDosenEmail" required> 
+                                <input type="hidden" id="selectedDosenNama">
+                                
+                                <div class="mb-4 p-3 rounded border bg-light">
+                                    <label class="form-label fw-bold mb-3">Pilih Dosen Tujuan <span class="text-danger">*</span></label>
+                                    <div id="dosenListContainer"></div>
+                                </div>
+                                
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold">Usulan Tanggal <span class="text-danger">*</span></label>
+                                        <input type="date" class="form-control" id="tanggal" required>
+                                    </div>
+                                    <div class="col-md-6 mt-3 mt-md-0">
+                                        <label class="form-label fw-bold">Usulan Jam <span class="text-danger">*</span></label>
+                                        <input type="time" class="form-control" id="waktu" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Deskripsi Keperluan <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="deskripsi" rows="3" placeholder="Sampaikan detail tujuan Anda dengan jelas dan sopan..." required></textarea>
+                                </div>
+                                
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-custom fs-5">
+                                        <i class="fas fa-eye me-2"></i> Buat & Tampilkan Draf Pesan
+                                    </button>
+                                </div>
+                            </form>
+
+                            <div id="wadahDraf" class="mt-4 p-4 border rounded shadow-sm bg-white">
+                                <h6 class="fw-bold mb-3" style="color: var(--ulm-orange);">
+                                    <i class="fas fa-envelope-open-text me-2"></i>Pratinjau Draf Pesan Anda:
+                                </h6>
+                                <textarea id="outputDraf" class="form-control bg-light mb-3" rows="10" readonly style="font-family: monospace; font-size: 0.95rem;"></textarea>
+                                <div class="d-grid gap-2">
+                                    <button type="button" class="btn btn-success fw-bold" id="btnSalin">
+                                        <i class="fas fa-copy me-2"></i>Salin Pesan ke Clipboard
+                                    </button>
+                                    <button type="button" class="btn btn-primary fw-bold" id="btnBukaGmail">
+                                        <i class="fab fa-google me-2"></i>Buka Aplikasi Gmail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer-kampus">
+    <div class="container">
+        <p class="mb-2"><i class="fas fa-headset me-2"></i>Mengalami kendala atau memiliki pertanyaan lebih lanjut?</p>
+        
+        <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 mt-2">
+            <a href="https://www.instagram.com/regstat_bak_ulm?igsh=aGRvN3Nhb2o1dXRj" target="_blank" class="fw-bold text-decoration-none" style="color: #E1306C;">
+                <i class="fab fa-instagram fa-lg me-1"></i> Admin SIMARI
+            </a>
+            
+            <span class="text-muted d-none d-sm-inline">|</span>
+            
+            <a href="https://wa.me/6285348617818" target="_blank" class="fw-bold text-decoration-none" style="color: #25D366;">
+                <i class="fab fa-whatsapp fa-lg me-1"></i> WhatsApp Admin
+            </a>
+        </div>
+        
+        <hr class="text-muted mx-auto" style="opacity: 0.2; max-width: 300px;">
+        <p class="text-muted mb-0" style="font-size: 0.85rem;">
+            &copy; 2026 Universitas Lambung Mangkurat
+        </p>
+    </div>
+</footer>
+
+
+<div class="modal fade" id="modalInfo" tabindex="-1" aria-labelledby="modalInfoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title fw-bold" id="modalInfoLabel" style="color: var(--ulm-orange);">
+                    <i class="fas fa-info-circle me-2"></i>Informasi Layanan
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-4 py-4">
+                <h6 class="fw-bold mb-2">Tentang Kami</h6>
+                <p class="text-muted mb-4" style="font-size: 0.95rem; line-height: 1.6; text-align: justify;">
+                    Platform ini adalah website yang didedikasikan bagi mahasiswa Universitas Lambung Mangkurat (ULM) untuk memfasilitasi komunikasi yang lebih terstruktur dan beretika dengan Bapak/Ibu Dosen di lingkungan kampus. Kami menyediakan layanan pembuatan draf pesan otomatis untuk berbagai keperluan akademik secara cepat dan mudah.
+                </p>
+                
+                <h6 class="fw-bold mb-2">Kebijakan Kami</h6>
+                <p class="text-muted mb-0" style="font-size: 0.95rem; line-height: 1.6; text-align: justify;">
+                    Kami di sini bertujuan untuk membantu mahasiswa merangkai draf pesan yang baik dan profesional. Sebagai bentuk komitmen perlindungan privasi, <strong>kami tidak menyimpan data pribadi Anda</strong>. Seluruh data identitas dan keperluan yang Anda masukkan hanya diproses sementara di perangkat Anda saat itu juga. Mohon agar selalu mengoreksi kembali isi draf sebelum melakukan pengiriman pesan.
+                </p>
+            </div>
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        
+        const daftarSemuaDosen = [
+            { nama: "Jason Pratama, B.Sc., M.IT.", nip: "199208152018021001", email: "jason.pratama@ulm.ac.id", foto: "dosen1.jpg" },
+            { nama: "Dr. Kevin Alexander, S.Kom., M.Sc.", nip: "198911222015041002", email: "kevin.alexander@ulm.ac.id", foto: "dosen2.jpg" },
+            { nama: "Reynald Wijaya, S.T., M.Eng.", nip: "199103052017011003", email: "reynald.wijaya@ulm.ac.id", foto: "dosen3.jpg" },
+            { nama: "Christian Wibisono, S.Kom., M.MSI.", nip: "199307302019081004", email: "christian.wibisono@ulm.ac.id", foto: "dosen4.jpg" },
+            { nama: "Brian Nathaniel, S.T., Ph.D.", nip: "198812102014021005", email: "brian.nathaniel@ulm.ac.id", foto: "dosen5.jpg" }
+        ];
+
+       
+        $('#btnMasuk').click(function() {
+            let nama = $('#inputNama').val().trim();
+            let nim = $('#inputNim').val().trim();
+            let semester = $('#inputSemester').val();
+            
+            if (nama === '' || nim === '' || semester === null) {
+                return Swal.fire({ 
+                    icon: 'warning', 
+                    title: 'Data Belum Lengkap', 
+                    text: 'Harap isi Nama, NIM, dan Semester secara lengkap!', 
+                    confirmButtonColor: '#E84C3D' 
+                });
+            }
+            
+            if (nim.length < 13) {
+                return Swal.fire({ 
+                    icon: 'error', 
+                    title: 'NIM Tidak Valid', 
+                    text: 'Nomor Induk Mahasiswa (NIM) minimal 13 digit angka.', 
+                    confirmButtonColor: '#E84C3D' 
+                });
+            }
+            
+            let jenisSmt = (parseInt(semester) % 2 === 0) ? "Genap" : "Ganjil";
+            
+            $('#displayNama').text(nama); 
+            $('#displayNim').text(nim); 
+            $('#displaySemester').text(semester); 
+            $('#displayTahunAkademik').text(`TA 2025/2026 (${jenisSmt})`);
+            
+            if (parseInt(semester) >= 6) {
+                $('#menuSkripsi').removeClass('locked'); 
+                $('#iconSkripsi').removeClass('fa-lock').addClass('fa-book-reader'); 
+                $('#teksSkripsi').text('Pembimbing Skripsi');
+            } else {
+                $('#menuSkripsi').addClass('locked'); 
+                $('#iconSkripsi').removeClass('fa-book-reader').addClass('fa-lock'); 
+                $('#teksSkripsi').text('Terkunci (Min. Smt 6)');
+            }
+            
+            $('#tahapLogin').fadeOut(250, () => $('#tahapDasbor').fadeIn(250));
+        });
+
+        
+        $('.menu-card').click(function() {
+            if ($(this).hasClass('locked')) {
+                return Swal.fire({ 
+                    icon: 'error', 
+                    title: 'Akses Terkunci', 
+                    text: 'Layanan bimbingan Tugas Akhir (TA) khusus minimal Semester 6.', 
+                    confirmButtonColor: '#E84C3D' 
+                });
+            }
+
+            let topik = $(this).data('topik');
+            let judul = $(this).data('judul');
+            
+            $('#topikTerpilihValue').val(topik); 
+            $('#judulFormLayanan').text(judul);
+
+            let desc = "";
+            if (topik === 'akademik') {
+                desc = "Silakan hubungi Dosen Pembimbing Akademik (PA) untuk mendiskusikan rencana mata kuliah yang akan diambil pada Kartu Rencana Studi (KRS) atau kendala akademik lainnya selama perkuliahan.";
+            } else if (topik === 'nilai') {
+                desc = "Pastikan Anda melampirkan alasan yang jelas jika ingin melakukan revisi nilai, mempertanyakan detail Kartu Hasil Studi (KHS), atau melakukan konfirmasi tugas langsung kepada Dosen Mata Kuliah Pengampu.";
+            } else {
+                desc = "Layanan ini dikhususkan untuk mengatur jadwal bimbingan proposal, pelaksanaan penelitian, dan penyusunan Tugas Akhir (TA) bersama Dosen Pembimbing Skripsi Anda.";
+            }
+            $('#deskripsiLayanan').text(desc);
+
+            let container = $('#dosenListContainer').empty();
+            $('#selectedDosenEmail, #selectedDosenNama').val('');
+
+            
+            daftarSemuaDosen.forEach(d => {
+                let cardHTML = `
+                <div class="dosen-card p-3 mb-2 border rounded shadow-sm d-flex align-items-center" data-email="${d.email}" data-nama="${d.nama}" style="cursor: pointer;">
+                     <img src="${d.foto}" alt="Foto ${d.nama}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 15px;">
+    
+                    <div class="dosen-info">
+                        <h6 class="mb-1 fw-bold">${d.nama}</h6>
+                        <p class="mb-1 text-muted" style="font-size: 0.85rem;"><i class="fas fa-envelope me-1"></i>${d.email}</p>
+                        <span class="badge bg-light text-dark border">NIP: ${d.nip}</span>
+                    </div>
+                </div>
+                `;
+                container.append(cardHTML);
+            });
+
+            $('.dosen-card').click(function() { 
+                $('.dosen-card').removeClass('selected'); 
+                $(this).addClass('selected'); 
+                $('#selectedDosenEmail').val($(this).data('email')); 
+                $('#selectedDosenNama').val($(this).data('nama')); 
+            });
+            
+            $('#wadahDraf').hide();
+            $('#layarMenu').fadeOut(200, () => $('#layarForm').fadeIn(300));
+        });
+
+        $('#btnKembali').click(() => {
+            $('#layarForm').fadeOut(200, () => { 
+                $('#formDetail')[0].reset(); 
+                $('.dosen-card').removeClass('selected'); 
+                $('#layarMenu').fadeIn(300); 
+            });
+        });
+
+        $('#btnKeluar').click(() => {
+            Swal.fire({ 
+                title: 'Keluar Website?', 
+                text: 'Apakah Anda yakin ingin keluar dari website layanan ini?', 
+                icon: 'question', 
+                showCancelButton: true, 
+                confirmButtonColor: '#E84C3D', 
+                cancelButtonColor: '#6c757d', 
+                confirmButtonText: 'Ya, Keluar!' 
+            }).then((res) => { 
+                if (res.isConfirmed) location.reload(); 
+            });
+        });
+
+        // template chat dosennya
+        $('#formDetail').submit(function(e) {
+            e.preventDefault();
+            
+            if ($('#selectedDosenEmail').val() === "") {
+                return Swal.fire({ 
+                    icon: 'warning', 
+                    title: 'Dosen Belum Dipilih', 
+                    text: 'Silakan klik/pilih salah satu dosen tujuan terlebih dahulu pada daftar!', 
+                    confirmButtonColor: '#E84C3D' 
+                });
+            }
+            
+            let t = $('#topikTerpilihValue').val();
+            let label = (t === "akademik") ? "Konsultasi Akademik & Kartu Rencana Studi (KRS)" : (t === "nilai" ? "Konsultasi Nilai & Kartu Hasil Studi (KHS)" : "Bimbingan Skripsi & Tugas Akhir (TA)");
+            
+            let draf = `Yth. Bapak ${$('#selectedDosenNama').val()},\n\nPerkenalkan saya ${$('#displayNama').text()} dengan NIM ${$('#displayNim').text()}, mahasiswa aktif Semester ${$('#displaySemester').text()} Program Studi Teknologi Informasi, Universitas Lambung Mangkurat.\n\nMelalui pesan ini, saya memohon ketersediaan waktu Bapak untuk melakukan ${label}.\n\nBerikut adalah rincian keperluan saya:\n- Deskripsi: ${$('#deskripsi').val()}\n- Usulan Tanggal: ${$('#tanggal').val()}\n- Usulan Jam: ${$('#waktu').val()} WITA\n\nApabila Bapak berhalangan pada usulan waktu tersebut, saya sangat bersedia untuk menyesuaikan dengan jadwal luang yang Bapak miliki.\n\nAtas perhatian dan ketersediaan waktu Bapak, saya ucapkan terima kasih.\n\nHormat saya,\n${$('#displayNama').text()}`;
+            
+            $('#outputDraf').val(draf); 
+            $('#wadahDraf').slideDown(400);
+            $('html, body').animate({ scrollTop: $("#wadahDraf").offset().top - 50 }, 500);
+        });
+
+        $('#btnSalin').click(() => { 
+            navigator.clipboard.writeText($('#outputDraf').val()).then(() => {
+                Swal.fire({ 
+                    icon: 'success', 
+                    title: 'Berhasil Disalin', 
+                    text: 'Pesan sukses disalin ke clipboard!', 
+                    confirmButtonColor: '#7CB342' 
+                });
+            }); 
+        });
+
+        $('#btnBukaGmail').click(() => {
+            let t = $('#topikTerpilihValue').val();
+            let label = (t === "akademik") ? "Konsultasi Akademik & Kartu Rencana Studi (KRS)" : (t === "nilai" ? "Konsultasi Nilai & Kartu Hasil Studi (KHS)" : "Bimbingan Skripsi & Tugas Akhir (TA)");
+            
+            let url = `https://mail.google.com/mail/?view=cm&fs=1&to=${$('#selectedDosenEmail').val()}&su=${encodeURIComponent(`Permohonan ${label} - ${$('#displayNama').text()} (${$('#displayNim').text()})`)}&body=${encodeURIComponent($('#outputDraf').val())}`;
+            window.open(url, '_blank');
+        });
+    });
+</script>
+
+</body>
+</html>

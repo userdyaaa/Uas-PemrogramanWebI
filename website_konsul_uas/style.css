@@ -1,0 +1,226 @@
+:root { 
+    --ulm-orange: #E84C3D; 
+    --ulm-green: #7CB342;  
+    --bg-light: #f4f7f6; 
+    --text-dark: #2c3e50; 
+}
+
+body { 
+    background-color: var(--bg-light); 
+    font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; 
+    color: var(--text-dark); 
+    margin: 0; 
+    padding: 0; 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+}
+
+/*header dan navbar*/
+.top-navbar { 
+    background-color: var(--ulm-orange); 
+    height: 12px; 
+    width: 100%; 
+}
+
+.main-header { 
+    background-color: white; 
+    padding: 15px 20px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    border-bottom: 1px solid #e0e0e0; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+}
+
+.header-brand { 
+    display: flex; 
+    align-items: center; 
+}
+
+.header-logo { 
+    width: 70px; 
+    margin-right: 15px; 
+}
+
+.header-title { 
+    color: var(--ulm-orange); 
+    font-size: 2rem; 
+    font-weight: 800; 
+    margin: 0; 
+    line-height: 1; 
+    letter-spacing: -0.5px; 
+}
+
+.header-subtitle { 
+    color: var(--ulm-orange); 
+    font-size: 0.95rem; 
+    font-weight: 600; 
+    margin: 2px 0 0 0; 
+}
+
+.header-univ { 
+    color: var(--ulm-orange); 
+    font-size: 0.75rem; 
+    margin: 0; 
+    font-weight: 500; 
+}
+
+.content-wrapper { 
+    flex: 1; 
+}
+
+.card-custom { 
+    background-color: white; 
+    border-radius: 8px; 
+    border: 1px solid #e9ecef; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+    padding: 40px; 
+    margin-top: 30px; 
+    margin-bottom: 150px; 
+}
+
+.btn-custom { 
+    background-color: var(--ulm-orange); 
+    color: white; 
+    font-weight: 700; 
+    border: none; 
+    padding: 12px; 
+    border-radius: 6px; 
+    transition: all 0.3s ease; 
+}
+
+.btn-custom:hover { 
+    background-color: #c0392b; 
+    color: white; 
+    transform: translateY(-2px); 
+}
+
+/*menu*/
+.menu-card { 
+    border: 2px solid #e9ecef; 
+    border-radius: 8px; 
+    padding: 25px 15px; 
+    text-align: center; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+    height: 100%; 
+    background-color: white; 
+}
+
+.menu-card:hover:not(.locked) { 
+    border-color: var(--ulm-orange); 
+    background-color: #fff9f8; 
+    transform: translateY(-3px); 
+}
+
+.menu-card.locked { 
+    background-color: #f1f3f5; 
+    border-color: #dee2e6; 
+    color: #adb5bd; 
+    cursor: not-allowed; 
+}
+
+.menu-card i { 
+    font-size: 2.5rem; 
+    color: var(--ulm-orange); 
+    margin-bottom: 15px; 
+}
+
+.menu-card.locked i { 
+    color: #adb5bd; 
+}
+
+/*list dosen*/
+.dosen-card { 
+    border: 2px solid #e9ecef; 
+    border-radius: 12px; 
+    padding: 15px; 
+    display: flex; 
+    align-items: center; 
+    cursor: pointer; 
+    transition: all 0.2s ease; 
+    background-color: white; 
+    margin-bottom: 12px; 
+}
+
+.dosen-card:hover { 
+    border-color: #ffb8b1; 
+    background-color: #fffcfb; 
+}
+
+@keyframes popPilih {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.dosen-card.selected { 
+    border-color: var(--ulm-orange); 
+    background-color: #fff2f0; 
+    box-shadow: 0 4px 12px rgba(232, 76, 61, 0.15); 
+    animation: popPilih 0.3s ease-in-out; 
+}
+
+.dosen-photo { 
+    width: 75px; 
+    height: 75px; 
+    object-fit: cover; 
+    border-radius: 50%; 
+    margin-right: 20px; 
+    border: 2px solid #e9ecef; 
+    flex-shrink: 0; 
+}
+
+.dosen-info {
+    min-width: 0; 
+}
+
+.dosen-info h6 { 
+    margin: 0; 
+    font-weight: 700; 
+    color: var(--text-dark); 
+}
+
+.dosen-info p { 
+    margin: 0; 
+    font-size: 0.85rem; 
+    color: #6c757d; 
+    word-break: break-all; 
+}
+
+.dosen-info .badge-nip { 
+    background-color: #e9ecef; 
+    color: #495057; 
+    font-size: 0.6rem; 
+    padding: 4px 6px; 
+    border-radius: 4px; 
+    display: inline-block; 
+    margin-top: 5px; 
+    white-space: nowrap; 
+}
+
+/*footer*/
+.footer-kampus { 
+    background-color: white; 
+    border-top: 1px solid #e0e0e0; 
+    padding: 20px 0; 
+    text-align: center; 
+    color: #6c757d; 
+    font-size: 0.9rem; 
+}
+
+.footer-link { 
+    color: var(--ulm-orange); 
+    text-decoration: none; 
+    transition: color 0.3s ease; 
+}
+
+.footer-link:hover { 
+    color: #c0392b; 
+    text-decoration: underline; 
+}
+
+#tahapDasbor, #layarForm, #wadahDraf { 
+    display: none; 
+}
